@@ -36,12 +36,12 @@ class RootCoordinator: Coordinator {
     
     func showHomeScreen() {
         
-        let homeCoordinator = HomeCoordinator(navigationController: self.navigationController)
+        let homeCoordinator = HomeCoordinator(window: window)
         homeCoordinator.start()
     }
     
     func showSignInScreen() {
-        let signInCoordinator = SignInCoordinator(navigationController: self.navigationController)
+        let signInCoordinator = SignInCoordinator(window: window)
         signInCoordinator.start()
     }
 
