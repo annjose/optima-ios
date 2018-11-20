@@ -13,13 +13,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+//    private var rootNavigationController: UINavigationController?
+    
+    private var rootCoordinator: RootCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = AppManager.shared.setUp()
-        window?.makeKeyAndVisible()
+        
+        guard let window = window else {
+            return false
+        }
+        
+        rootCoordinator = RootCoordinator(window: window)
+        rootCoordinator?.start()
+        
+        //let rootViewController = RootViewController()
+
+        //rootNavigationController = UINavigationController(rootViewController: rootViewController)
+
+        // window.rootViewController = rootNavigationController
+        
+        
+        window.makeKeyAndVisible()
         
         return true
     }

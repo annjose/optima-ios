@@ -2,7 +2,7 @@
 //  RootViewController.swift
 //  Optima
 //
-//  Created by Jose, Ann Catherine on 11/12/18.
+//  Created by Jose, Ann Catherine on 11/19/18.
 //  Copyright © 2018 Optima. All rights reserved.
 //
 
@@ -11,65 +11,51 @@ import UIKit
 class RootViewController: UIViewController {
 
     private var currentViewController: UIViewController!
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
+    private let activityIndicator = UIActivityIndicatorView(style: .white)
+
+    weak var coordinator: RootCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        self.view.backgroundColor = UIColor.white
-        
-        showSplashScreen()
-    }
 
-    private func showSplashScreen() {
-        let splashViewController = SplashViewController()
+        // Do any additional setup after loading the view.
         
-        addChild(splashViewController)
-        splashViewController.view.frame = self.view.frame
-        self.view.addSubview(splashViewController.view)
-        splashViewController.didMove(toParent: self)
-        
-        currentViewController = splashViewController
+        configureView()
     }
     
-    func showSignInScreen() {
+    override func viewDidAppear(_ animated: Bool) {
         
-        let signInViewController = UINavigationController(rootViewController:  SignInViewController())
+    }
+    private func configureView() {
         
-        addChild(signInViewController)
-        self.view.addSubview(signInViewController.view)
-        signInViewController.didMove(toParent: self)
-        signInViewController.view.frame = self.view.frame
-
-        currentViewController.willMove(toParent: nil)
-        currentViewController.view.removeFromSuperview()
-        currentViewController.removeFromParent()
+        view.backgroundColor = .gray
         
-        currentViewController = signInViewController
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.frame = view.bounds
+        activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        
+        fetchData()
     }
     
-    func showHomeScreen() {
+    private func fetchData() {
+        activityIndicator.startAnimating()
         
-        let homeViewController = UINavigationController(rootViewController: HomeViewController())
-        
-        addChild(homeViewController)
-        self.view.addSubview(homeViewController.view)
-        homeViewController.didMove(toParent: self)
-        homeViewController.view.frame = self.view.frame
-
-        currentViewController.willMove(toParent: nil)
-        currentViewController.view.removeFromSuperview()
-        currentViewController.removeFromParent()
-        
-        currentViewController = homeViewController
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
+            [weak self] in
+            
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicator.stopAnimating()
+            
+            if AppManager.shared.isSignedIn() {
+                // show post-auth screen
+                strongSelf.coordinator?.showHomeScreen()
+            } else {
+                // show sign-in screen
+                strongSelf.coordinator?.showSignInScreen()
+            }
+        }
     }
+
 }
-

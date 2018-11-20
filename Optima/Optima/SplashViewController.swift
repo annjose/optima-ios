@@ -12,6 +12,8 @@ class SplashViewController: UIViewController {
 
     private let activityIndicator = UIActivityIndicatorView(style: .white)
     
+    weak var coordinator: RootCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,7 @@ class SplashViewController: UIViewController {
     
     private func configureView() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = .gray
         view.addSubview(activityIndicator)
         
         activityIndicator.frame = view.bounds
@@ -41,10 +43,12 @@ class SplashViewController: UIViewController {
             
             if AppManager.shared.isSignedIn() {
                 // show post-auth screen
-                AppManager.shared.showHomeScreen()
+                //AppManager.shared.showHomeScreen()
+                strongSelf.coordinator?.showHomeScreen()
             } else {
                 // show sign-in screen
-                AppManager.shared.showSignInScreen()
+                //AppManager.shared.showSignInScreen()
+                strongSelf.coordinator?.showSignInScreen()
             }
         }
     }
