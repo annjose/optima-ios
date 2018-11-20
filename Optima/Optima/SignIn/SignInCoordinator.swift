@@ -8,29 +8,40 @@
 
 import UIKit
 
-// This coordinator adds top level VCs as child of root VC, thus avoids swapping root VCs
-class SignInCoordinator: Coordinator {
+protocol SignInCoordinatorProtocol: Coordinator {
+    func showHomeScreen()
+}
+
+/* 3 variations of the coordinator are implemented in this file:
+    1. Single root view controller where the content of the root VC is changes
+    2. Multiple root view controllers where the window's root VC is swapped
+    3. Root view controller is a navigation controller and child VCs are pushed on to it
+*/
+
+// Type 1: This coordinator adds top level VCs as child of root VC, thus avoids swapping root VCs
+class SignInCoordinator: SignInCoordinatorProtocol {
     
     private let signInViewController: SignInViewController
-    private var signInNavigationController: UINavigationController?
     
     private let rootViewController: RootViewController
     
     init(rootViewController: RootViewController) {
-        self.rootViewController = rootViewController
         self.signInViewController = SignInViewController()
 
+        self.rootViewController = rootViewController
+        print("Creating SignInCoordinator variant with single root view controller")
     }
     
     func start() {
         signInViewController.viewModel = SignInViewModel()
         signInViewController.coordinator = self
         
-        self.signInNavigationController = UINavigationController(rootViewController: self.signInViewController)
-        rootViewController.addChild(signInNavigationController!)
-        rootViewController.view.addSubview(signInNavigationController!.view)
-        signInNavigationController!.didMove(toParent: rootViewController)
-        signInNavigationController!.view.frame = rootViewController.view.frame
+        let signInNavigationController = UINavigationController(rootViewController: self.signInViewController)
+        
+        rootViewController.addChild(signInNavigationController)
+        rootViewController.view.addSubview(signInNavigationController.view)
+        signInNavigationController.didMove(toParent: rootViewController)
+        signInNavigationController.view.frame = rootViewController.view.frame
         
         rootViewController.currentViewController.willMove(toParent: nil)
         rootViewController.currentViewController.view.removeFromSuperview()
@@ -41,6 +52,58 @@ class SignInCoordinator: Coordinator {
     
     func showHomeScreen() {
         let homeCoordinator = HomeCoordinator(rootViewController: rootViewController)
+        homeCoordinator.start()
+    }
+}
+
+// Type 2: This coordinator swaps the root view controller of the window
+class SignInCoordinator_SwapWindowRootVC: SignInCoordinatorProtocol {
+    
+    private let signInViewController: SignInViewController
+    
+    private let window: UIWindow
+    
+    init(window: UIWindow) {
+        self.signInViewController = SignInViewController()
+        
+        self.window = window
+        print("Creating SignInCoordinator variant with multiple swappable root view controller")
+    }
+    func start() {
+        signInViewController.viewModel = SignInViewModel()
+        signInViewController.coordinator = self
+        
+        let signInNavigationController = UINavigationController(rootViewController: signInViewController)
+        window.rootViewController = signInNavigationController
+    }
+    
+    func showHomeScreen() {
+        let homeCoordinator = HomeCoordinator_SwapWindowRootVC(window: window)
+        homeCoordinator.start()
+    }
+}
+
+// Type 3: This coordinator pushes view controllers to the root navigation controller
+class SignInCoordinator_NavRootVC: SignInCoordinatorProtocol {
+    
+    private let signInViewController: SignInViewController
+    private let navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.signInViewController = SignInViewController()
+        
+        self.navigationController = navigationController
+        print("Creating SignInCoordinator variant with navigable root view controller")
+    }
+    func start() {
+        signInViewController.viewModel = SignInViewModel()
+        signInViewController.coordinator = self
+        
+        navigationController.pushViewController(signInViewController, animated: true)
+    }
+    
+    func showHomeScreen() {
+        let homeCoordinator = HomeCoordinator_NavRootVC(navigationController: navigationController)
         homeCoordinator.start()
     }
 }

@@ -8,11 +8,11 @@
 
 import UIKit
 
+// This is the root VC that holds the current view controller that acts
+//  as a container for the view controller that is relevant for the app at any given time
 class RootViewController: UIViewController {
 
     var currentViewController: UIViewController!
-
-    private let activityIndicator = UIActivityIndicatorView(style: .white)
 
     weak var coordinator: RootCoordinator?
     
@@ -21,19 +21,5 @@ class RootViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        showSplashScreen()
     }
-    
-    private func showSplashScreen() {
-        let splashViewController = SplashViewController()
-        splashViewController.coordinator = coordinator
-        
-        addChild(splashViewController)
-        splashViewController.view.frame = self.view.frame
-        self.view.addSubview(splashViewController.view)
-        splashViewController.didMove(toParent: self)
-        
-        currentViewController = splashViewController
-    }
-    
 }

@@ -1,5 +1,5 @@
 //
-//  AppManager.swift
+//  AuthManager.swift
 //  Optima
 //
 //  Created by Jose, Ann Catherine on 11/12/18.
@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class AppManager {
+class AuthManager {
     
-    static let shared = AppManager()
+    static let shared = AuthManager()
     
     func isSignedIn() -> Bool {
         return UserDefaults.standard.bool(forKey: "SIGNED_IN")

@@ -11,19 +11,17 @@
 		5057B52121A3C1E500F2C800 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B52021A3C1E500F2C800 /* RootViewController.swift */; };
 		5057B52321A3C2BA00F2C800 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B52221A3C2BA00F2C800 /* RootCoordinator.swift */; };
 		5057B52521A3CF7E00F2C800 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B52421A3CF7E00F2C800 /* Coordinator.swift */; };
-		5057B52921A3EEF300F2C800 /* SignInCoordinator_SwapRootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B52821A3EEF300F2C800 /* SignInCoordinator_SwapRootVC.swift */; };
-		5057B52B21A3F19700F2C800 /* SignInCoordinator_PushToNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B52A21A3F19700F2C800 /* SignInCoordinator_PushToNav.swift */; };
 		5057B52D21A3F1DC00F2C800 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B52C21A3F1DC00F2C800 /* SignInViewModel.swift */; };
 		5057B53121A3F21E00F2C800 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53021A3F21E00F2C800 /* HomeCoordinator.swift */; };
 		5057B53321A3F22800F2C800 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53221A3F22800F2C800 /* HomeViewModel.swift */; };
 		5057B53521A3F2F200F2C800 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */; };
+		5057B53821A480AE00F2C800 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53721A480AE00F2C800 /* SplashCoordinator.swift */; };
 		507A04F1219A3C0400117D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A04F0219A3C0400117D8C /* AppDelegate.swift */; };
-		507A04F3219A3C0400117D8C /* RootViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A04F2219A3C0400117D8C /* RootViewController1.swift */; };
 		507A04F8219A3C0500117D8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507A04F7219A3C0500117D8C /* Assets.xcassets */; };
 		507A04FB219A3C0500117D8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 507A04F9219A3C0500117D8C /* LaunchScreen.storyboard */; };
 		507A0506219A3C0600117D8C /* OptimaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0505219A3C0600117D8C /* OptimaTests.swift */; };
 		507A0511219A3C0600117D8C /* OptimaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0510219A3C0600117D8C /* OptimaUITests.swift */; };
-		507A051F219A3DA500117D8C /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A051E219A3DA500117D8C /* AppManager.swift */; };
+		507A051F219A3DA500117D8C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A051E219A3DA500117D8C /* AuthManager.swift */; };
 		507A0521219A406000117D8C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0520219A406000117D8C /* SplashViewController.swift */; };
 		507A0523219A439D00117D8C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0522219A439D00117D8C /* SignInViewController.swift */; };
 		507A0526219A481800117D8C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0525219A481800117D8C /* HomeViewController.swift */; };
@@ -51,15 +49,13 @@
 		5057B52021A3C1E500F2C800 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		5057B52221A3C2BA00F2C800 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		5057B52421A3CF7E00F2C800 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Optima/Coordinator.swift; sourceTree = SOURCE_ROOT; };
-		5057B52821A3EEF300F2C800 /* SignInCoordinator_SwapRootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator_SwapRootVC.swift; sourceTree = "<group>"; };
-		5057B52A21A3F19700F2C800 /* SignInCoordinator_PushToNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator_PushToNav.swift; sourceTree = "<group>"; };
 		5057B52C21A3F1DC00F2C800 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		5057B53021A3F21E00F2C800 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		5057B53221A3F22800F2C800 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		5057B53721A480AE00F2C800 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		507A04ED219A3C0400117D8C /* Optima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507A04F0219A3C0400117D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		507A04F2219A3C0400117D8C /* RootViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController1.swift; sourceTree = "<group>"; };
 		507A04F7219A3C0500117D8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		507A04FA219A3C0500117D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		507A04FC219A3C0500117D8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,7 +65,7 @@
 		507A050C219A3C0600117D8C /* OptimaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OptimaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		507A0510219A3C0600117D8C /* OptimaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimaUITests.swift; sourceTree = "<group>"; };
 		507A0512219A3C0600117D8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		507A051E219A3DA500117D8C /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		507A051E219A3DA500117D8C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		507A0520219A406000117D8C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		507A0522219A439D00117D8C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		507A0525219A481800117D8C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				5057B51E21A3BF1500F2C800 /* UserProfile.swift */,
-				5057B52421A3CF7E00F2C800 /* Coordinator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,12 +107,9 @@
 		5057B52E21A3F1EC00F2C800 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */,
-				5057B52821A3EEF300F2C800 /* SignInCoordinator_SwapRootVC.swift */,
-				5057B52A21A3F19700F2C800 /* SignInCoordinator_PushToNav.swift */,
 				507A0522219A439D00117D8C /* SignInViewController.swift */,
-				507A0520219A406000117D8C /* SplashViewController.swift */,
 				5057B52C21A3F1DC00F2C800 /* SignInViewModel.swift */,
+				5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -125,11 +117,20 @@
 		5057B52F21A3F20600F2C800 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				5057B53021A3F21E00F2C800 /* HomeCoordinator.swift */,
 				507A0525219A481800117D8C /* HomeViewController.swift */,
 				5057B53221A3F22800F2C800 /* HomeViewModel.swift */,
+				5057B53021A3F21E00F2C800 /* HomeCoordinator.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5057B53621A4780F00F2C800 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				507A0520219A406000117D8C /* SplashViewController.swift */,
+				5057B53721A480AE00F2C800 /* SplashCoordinator.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		507A04E4219A3C0400117D8C = {
@@ -158,11 +159,12 @@
 				5057B52F21A3F20600F2C800 /* Home */,
 				5057B51D21A3BF0500F2C800 /* Model */,
 				5057B52E21A3F1EC00F2C800 /* SignIn */,
+				5057B53621A4780F00F2C800 /* Splash */,
 				507A04F0219A3C0400117D8C /* AppDelegate.swift */,
-				507A051E219A3DA500117D8C /* AppManager.swift */,
+				507A051E219A3DA500117D8C /* AuthManager.swift */,
+				5057B52421A3CF7E00F2C800 /* Coordinator.swift */,
 				5057B52221A3C2BA00F2C800 /* RootCoordinator.swift */,
 				5057B52021A3C1E500F2C800 /* RootViewController.swift */,
-				507A04F2219A3C0400117D8C /* RootViewController1.swift */,
 				507A04F7219A3C0500117D8C /* Assets.xcassets */,
 				507A0524219A43B700117D8C /* Supporting Files */,
 			);
@@ -326,19 +328,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5057B52921A3EEF300F2C800 /* SignInCoordinator_SwapRootVC.swift in Sources */,
-				507A051F219A3DA500117D8C /* AppManager.swift in Sources */,
-				507A04F3219A3C0400117D8C /* RootViewController1.swift in Sources */,
+				507A051F219A3DA500117D8C /* AuthManager.swift in Sources */,
 				5057B52521A3CF7E00F2C800 /* Coordinator.swift in Sources */,
 				5057B52D21A3F1DC00F2C800 /* SignInViewModel.swift in Sources */,
 				5057B53121A3F21E00F2C800 /* HomeCoordinator.swift in Sources */,
 				507A04F1219A3C0400117D8C /* AppDelegate.swift in Sources */,
-				5057B52B21A3F19700F2C800 /* SignInCoordinator_PushToNav.swift in Sources */,
 				507A0523219A439D00117D8C /* SignInViewController.swift in Sources */,
 				507A0521219A406000117D8C /* SplashViewController.swift in Sources */,
 				507A0526219A481800117D8C /* HomeViewController.swift in Sources */,
 				5057B52121A3C1E500F2C800 /* RootViewController.swift in Sources */,
 				5057B52321A3C2BA00F2C800 /* RootCoordinator.swift in Sources */,
+				5057B53821A480AE00F2C800 /* SplashCoordinator.swift in Sources */,
 				5057B53321A3F22800F2C800 /* HomeViewModel.swift in Sources */,
 				5057B53521A3F2F200F2C800 /* SignInCoordinator.swift in Sources */,
 				5057B51F21A3BF1500F2C800 /* UserProfile.swift in Sources */,

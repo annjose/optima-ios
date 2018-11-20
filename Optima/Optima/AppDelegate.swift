@@ -26,16 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         
-        rootCoordinator = RootCoordinator(window: window)
+        // Set the coordinationStratey to a valid one
+        //  Can be singleRootViewController, multipleRootViewControllers or navigableRootViewController
+        //  The best approach is to use singleRootViewController
+        let coordinationStrategy: RootViewCoordinationStrategy = .singleRootViewController
+
+        rootCoordinator = RootCoordinator(window: window, coordinationStrategy: coordinationStrategy)
         rootCoordinator?.start()
-        
-        //let rootViewController = RootViewController()
-
-        //rootNavigationController = UINavigationController(rootViewController: rootViewController)
-
-        // window.rootViewController = rootNavigationController
-        
-        
+                
         window.makeKeyAndVisible()
         
         return true

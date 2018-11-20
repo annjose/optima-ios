@@ -12,7 +12,7 @@ class SplashViewController: UIViewController {
 
     private let activityIndicator = UIActivityIndicatorView(style: .white)
     
-    var coordinator: RootCoordinator?
+    var coordinator: SplashCoordinatorProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +41,16 @@ class SplashViewController: UIViewController {
             guard let strongSelf = self else { return }
             strongSelf.activityIndicator.stopAnimating()
             
-            if AppManager.shared.isSignedIn() {
+            guard let coordinator = strongSelf.coordinator else {
+                print("ERROR SplashViewController: coordinator is nil; cannot show the next screen.")
+                return
+            }
+            if AuthManager.shared.isSignedIn() {
                 // show post-auth screen
-                //AppManager.shared.showHomeScreen()
-                strongSelf.coordinator?.showHomeScreen()
+                coordinator.showHomeScreen()
             } else {
                 // show sign-in screen
-                //AppManager.shared.showSignInScreen()
-                strongSelf.coordinator?.showSignInScreen()
+                coordinator.showSignInScreen()
             }
         }
     }

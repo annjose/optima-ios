@@ -10,7 +10,7 @@ import UIKit
 
 class SignInViewController: UIViewController {
 
-    var coordinator: SignInCoordinator?
+    var coordinator: SignInCoordinatorProtocol?
     var viewModel: SignInViewModel!
     
     override func viewDidLoad() {

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Protocol that defines the contract for all coordinators so that view controllers
+//  or other coordinators can confidently invoke this method to start the flow
 protocol Coordinator {
     func start()
 }

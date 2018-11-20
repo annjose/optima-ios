@@ -11,7 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     var viewModel: HomeViewModel!
-    var coordinator: HomeCoordinator?
+    var coordinator: HomeCoordinatorProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
