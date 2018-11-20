@@ -13,6 +13,7 @@ class RootViewController1: UIViewController {
     private var currentViewController: UIViewController!
     
     init() {
+        currentViewController = SplashViewController()
         super.init(nibName: nil, bundle: nil)
     }
     

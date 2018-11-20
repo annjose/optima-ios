@@ -10,7 +10,7 @@ import UIKit
 
 class RootViewController: UIViewController {
 
-    private var currentViewController: UIViewController!
+    var currentViewController: UIViewController!
 
     private let activityIndicator = UIActivityIndicatorView(style: .white)
 
@@ -21,41 +21,19 @@ class RootViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        configureView()
+        showSplashScreen()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    private func showSplashScreen() {
+        let splashViewController = SplashViewController()
+        splashViewController.coordinator = coordinator
         
-    }
-    private func configureView() {
+        addChild(splashViewController)
+        splashViewController.view.frame = self.view.frame
+        self.view.addSubview(splashViewController.view)
+        splashViewController.didMove(toParent: self)
         
-        view.backgroundColor = .gray
-        
-        view.addSubview(activityIndicator)
-        
-        activityIndicator.frame = view.bounds
-        activityIndicator.backgroundColor = UIColor(white: 0, alpha: 0.4)
-        
-        fetchData()
+        currentViewController = splashViewController
     }
     
-    private func fetchData() {
-        activityIndicator.startAnimating()
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1)) {
-            [weak self] in
-            
-            guard let strongSelf = self else { return }
-            strongSelf.activityIndicator.stopAnimating()
-            
-            if AppManager.shared.isSignedIn() {
-                // show post-auth screen
-                strongSelf.coordinator?.showHomeScreen()
-            } else {
-                // show sign-in screen
-                strongSelf.coordinator?.showSignInScreen()
-            }
-        }
-    }
-
 }

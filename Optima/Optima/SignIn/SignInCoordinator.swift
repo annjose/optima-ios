@@ -1,5 +1,5 @@
 //
-//  SignInViewController.swift
+//  SignInCoordinator.swift
 //  Optima
 //
 //  Created by Jose, Ann Catherine on 11/19/18.
@@ -8,28 +8,39 @@
 
 import UIKit
 
-// This coordinator swaps the root view controller of the window
+// This coordinator adds top level VCs as child of root VC, thus avoids swapping root VCs
 class SignInCoordinator: Coordinator {
     
-    let window: UIWindow
-    
     private let signInViewController: SignInViewController
-    private let signInNavigationController: UINavigationController
+    private var signInNavigationController: UINavigationController?
     
-    init(window: UIWindow) {
-        self.window = window
+    private let rootViewController: RootViewController
+    
+    init(rootViewController: RootViewController) {
+        self.rootViewController = rootViewController
         self.signInViewController = SignInViewController()
-        self.signInNavigationController = UINavigationController(rootViewController: self.signInViewController)
+
     }
+    
     func start() {
         signInViewController.viewModel = SignInViewModel()
         signInViewController.coordinator = self
         
-        window.rootViewController = signInNavigationController
+        self.signInNavigationController = UINavigationController(rootViewController: self.signInViewController)
+        rootViewController.addChild(signInNavigationController!)
+        rootViewController.view.addSubview(signInNavigationController!.view)
+        signInNavigationController!.didMove(toParent: rootViewController)
+        signInNavigationController!.view.frame = rootViewController.view.frame
+        
+        rootViewController.currentViewController.willMove(toParent: nil)
+        rootViewController.currentViewController.view.removeFromSuperview()
+        rootViewController.currentViewController.removeFromParent()
+        
+        rootViewController.currentViewController = signInNavigationController
     }
     
     func showHomeScreen() {
-        let homeCoordinator = HomeCoordinator(window: window)
+        let homeCoordinator = HomeCoordinator(rootViewController: rootViewController)
         homeCoordinator.start()
     }
 }

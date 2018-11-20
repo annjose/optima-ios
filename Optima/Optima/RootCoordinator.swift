@@ -15,33 +15,34 @@ class RootCoordinator: Coordinator {
     
     private let rootViewController: RootViewController
     
-    private let navigationController: UINavigationController
+    //private let navigationController: UINavigationController
     
     init(window: UIWindow) {
         self.window = window
         self.rootViewController = RootViewController()
-        self.navigationController = UINavigationController(rootViewController: rootViewController)
+        //self.navigationController = UINavigationController(rootViewController: rootViewController)
     }
     
     func start() {
         self.rootViewController.coordinator = self
-        window.rootViewController = self.navigationController
+        window.rootViewController = self.rootViewController
+        //window.rootViewController = self.navigationController
     }
     
     func showSplashScreen() {
         let splashViewController = SplashViewController()
         splashViewController.coordinator = self
-        navigationController.pushViewController(splashViewController, animated: true)
+        // navigationController.pushViewController(splashViewController, animated: true)
     }
     
     func showHomeScreen() {
         
-        let homeCoordinator = HomeCoordinator(window: window)
+        let homeCoordinator = HomeCoordinator(rootViewController: rootViewController)
         homeCoordinator.start()
     }
     
     func showSignInScreen() {
-        let signInCoordinator = SignInCoordinator(window: window)
+        let signInCoordinator = SignInCoordinator(rootViewController: rootViewController)
         signInCoordinator.start()
     }
 

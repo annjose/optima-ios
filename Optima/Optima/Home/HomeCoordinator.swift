@@ -10,25 +10,35 @@ import UIKit
 
 class HomeCoordinator: Coordinator {
     
-    let window: UIWindow
     let homeViewController: HomeViewController
     let homeNavigationController: UINavigationController
     
-    init(window: UIWindow) {
-        self.window = window
+    private let rootViewController: RootViewController
+
+    init(rootViewController: RootViewController) {
+        self.rootViewController = rootViewController
         self.homeViewController = HomeViewController()
         self.homeNavigationController = UINavigationController(rootViewController: self.homeViewController)
     }
-    
+        
     func start() {
         homeViewController.viewModel = HomeViewModel()
         homeViewController.coordinator = self
         
-        window.rootViewController = homeNavigationController
+        rootViewController.addChild(homeNavigationController)
+        rootViewController.view.addSubview(homeNavigationController.view)
+        homeNavigationController.didMove(toParent: rootViewController)
+        homeNavigationController.view.frame = rootViewController.view.frame
+        
+        rootViewController.currentViewController.willMove(toParent: nil)
+        rootViewController.currentViewController.view.removeFromSuperview()
+        rootViewController.currentViewController.removeFromParent()
+        
+        rootViewController.currentViewController = homeNavigationController
     }
     
     func showSignInScreen() {
-        let signInCoordinator = SignInCoordinator(window: window)
+        let signInCoordinator = SignInCoordinator(rootViewController: rootViewController)
         signInCoordinator.start()
     }
 }

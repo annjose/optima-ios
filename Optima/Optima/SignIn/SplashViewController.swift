@@ -12,7 +12,7 @@ class SplashViewController: UIViewController {
 
     private let activityIndicator = UIActivityIndicatorView(style: .white)
     
-    weak var coordinator: RootCoordinator?
+    var coordinator: RootCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
