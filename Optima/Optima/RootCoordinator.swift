@@ -30,6 +30,9 @@ class RootCoordinator: Coordinator {
     
     private var rootNavigationController: UINavigationController?
     
+    private var signInCoordinator: SignInCoordinatorProtocol?
+    private var homeCoordinator: HomeCoordinatorProtocol?
+
     init(window: UIWindow, coordinationStrategy: RootViewCoordinationStrategy) {
         self.window = window
         self.coordinationStrategy = coordinationStrategy
@@ -58,7 +61,10 @@ class RootCoordinator: Coordinator {
     }
     
     func showSignInScreen() {
-        guard let signInCoordinator = createSignInCoordinator(coordinationStrategy: coordinationStrategy) else {
+        if signInCoordinator == nil {
+            signInCoordinator = createSignInCoordinator(coordinationStrategy: coordinationStrategy)
+        }
+        guard let signInCoordinator = signInCoordinator else {
             print("ERROR signInCoordinator is nil; cannot show SignIn screen")
             return
         }
@@ -66,7 +72,10 @@ class RootCoordinator: Coordinator {
     }
 
     func showHomeScreen() {
-        guard let homeCoordinator = createHomeCoordinator(coordinationStrategy: coordinationStrategy) else {
+        if homeCoordinator == nil {
+            homeCoordinator = createHomeCoordinator(coordinationStrategy: coordinationStrategy)
+        }
+        guard let homeCoordinator = homeCoordinator else {
             print("ERROR homeCoordinator is nil; cannot show Home screen")
             return
         }
@@ -81,7 +90,7 @@ class RootCoordinator: Coordinator {
         switch coordinationStrategy {
             
         case .singleRootViewController:
-            let coordinator = SplashCoordinator(rootViewController: rootViewController)
+            let coordinator = SplashCoordinator(rootViewController: rootViewController, rootCoordinator: self)
             return coordinator
             
         case .multipleRootViewControllers:
@@ -104,7 +113,7 @@ class RootCoordinator: Coordinator {
         switch coordinationStrategy {
             
         case .singleRootViewController:
-            let coordinator = SignInCoordinator(rootViewController: rootViewController)
+            let coordinator = SignInCoordinator(rootViewController: rootViewController, rootCoordinator: self)
             return coordinator
             
         case .multipleRootViewControllers:
@@ -127,7 +136,7 @@ class RootCoordinator: Coordinator {
         switch coordinationStrategy {
             
         case .singleRootViewController:
-            let coordinator = HomeCoordinator(rootViewController: rootViewController)
+            let coordinator = HomeCoordinator(rootViewController: rootViewController, rootCoordinator: self)
             return coordinator
             
         case .multipleRootViewControllers:

@@ -21,18 +21,26 @@ protocol SignInCoordinatorProtocol: Coordinator {
 // Type 1: This coordinator adds top level VCs as child of root VC, thus avoids swapping root VCs
 class SignInCoordinator: SignInCoordinatorProtocol {
     
-    private let signInViewController: SignInViewController
+    private var signInViewController: SignInViewController
     
     private let rootViewController: RootViewController
+
+    private let rootCoordinator: RootCoordinator
     
-    init(rootViewController: RootViewController) {
-        self.signInViewController = SignInViewController()
+    init(rootViewController: RootViewController, rootCoordinator: RootCoordinator) {
 
         self.rootViewController = rootViewController
+        self.rootCoordinator = rootCoordinator
+        
+        self.signInViewController = SignInViewController()
         print("Creating SignInCoordinator variant with single root view controller")
     }
     
     func start() {
+        
+        // Reset the SignInViewController and set its view model and ccordinator
+        signInViewController = SignInViewController()
+
         signInViewController.viewModel = SignInViewModel()
         signInViewController.coordinator = self
         
@@ -51,8 +59,10 @@ class SignInCoordinator: SignInCoordinatorProtocol {
     }
     
     func showHomeScreen() {
-        let homeCoordinator = HomeCoordinator(rootViewController: rootViewController)
-        homeCoordinator.start()
+        // You can either create a new Home coordinator or ask the root coordinator to show Home screen
+        // let homeCoordinator = HomeCoordinator(rootViewController: rootViewController)
+        // homeCoordinator.start()
+        rootCoordinator.showHomeScreen()
     }
 }
 

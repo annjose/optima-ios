@@ -17,6 +17,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("SignInViewController:viewDidLoad")
         configureView()
     }
     
@@ -37,5 +38,9 @@ class SignInViewController: UIViewController {
         if signedIn {
             coordinator?.showHomeScreen()
         }
+    }
+    
+    deinit {
+        print("SignInViewController:deinit")
     }
 }

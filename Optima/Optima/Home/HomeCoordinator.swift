@@ -21,22 +21,31 @@ protocol HomeCoordinatorProtocol: Coordinator {
 // Type 1: This coordinator adds top level VCs as child of root VC, thus avoids swapping root VCs
 class HomeCoordinator: HomeCoordinatorProtocol {
     
-    let homeViewController: HomeViewController
+    private var homeViewController: HomeViewController
     
     private let rootViewController: RootViewController
 
-    init(rootViewController: RootViewController) {
+    private let rootCoordinator: RootCoordinator
+    
+    init(rootViewController: RootViewController, rootCoordinator: RootCoordinator) {
+        
+        self.rootViewController = rootViewController
+        self.rootCoordinator = rootCoordinator
+        
         self.homeViewController = HomeViewController()
 
-        self.rootViewController = rootViewController
         print("Creating HomeCoordinator variant with single root view controller")
     }
     
     deinit {
-        print("HomeCoordinator:deinit")
+        print("HomeCoordinator:deinit()")
     }
     
     func start() {
+        
+        // Reset the HomeViewController and set its view model and ccordinator
+        homeViewController = HomeViewController()
+
         homeViewController.viewModel = HomeViewModel()
         homeViewController.coordinator = self
 
@@ -55,8 +64,9 @@ class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func showSignInScreen() {
-        let signInCoordinator = SignInCoordinator(rootViewController: rootViewController)
-        signInCoordinator.start()
+        // let signInCoordinator = SignInCoordinator(rootViewController: rootViewController)
+        // signInCoordinator.start()
+        rootCoordinator.showSignInScreen()
     }
 }
 

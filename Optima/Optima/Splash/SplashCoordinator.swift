@@ -26,8 +26,12 @@ class SplashCoordinator: SplashCoordinatorProtocol {
     
     private let rootViewController: RootViewController
     
-    init(rootViewController: RootViewController) {
+    private let rootCoordinator: RootCoordinator
+
+    init(rootViewController: RootViewController, rootCoordinator: RootCoordinator) {
         self.rootViewController = rootViewController
+        self.rootCoordinator = rootCoordinator
+        
         self.splashViewController = SplashViewController()
         print("Creating SplashCoordinator variant with single root view controller")
     }
@@ -45,12 +49,14 @@ class SplashCoordinator: SplashCoordinatorProtocol {
     }
     
     func showSignInScreen() {
-        let signInCoordinator = SignInCoordinator(rootViewController: rootViewController)
-        signInCoordinator.start()
+        // let signInCoordinator = SignInCoordinator(rootViewController: rootViewController)
+        // signInCoordinator.start()
+        rootCoordinator.showSignInScreen()
     }
     func showHomeScreen() {
-        let homeCoordinator = HomeCoordinator(rootViewController: rootViewController)
-        homeCoordinator.start()
+        // let homeCoordinator = HomeCoordinator(rootViewController: rootViewController)
+        // homeCoordinator.start()
+        rootCoordinator.showHomeScreen()
     }
 }
 

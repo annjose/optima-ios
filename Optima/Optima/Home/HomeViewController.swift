@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("HomeViewController:viewDidLoad")
         configureView()
     }
     
@@ -37,5 +38,9 @@ class HomeViewController: UIViewController {
         if signedOut {
             coordinator?.showSignInScreen()
         }
+    }
+    
+    deinit {
+        print("HomeViewController:deinit()")
     }
 }
