@@ -29,15 +29,23 @@ class SplashCoordinator: SplashCoordinatorProtocol {
     private let rootCoordinator: RootCoordinator
 
     init(rootViewController: RootViewController, rootCoordinator: RootCoordinator) {
+        
+        print("SplashCoordinator:init()")
+
         self.rootViewController = rootViewController
         self.rootCoordinator = rootCoordinator
         
         self.splashViewController = SplashViewController()
-        print("Creating SplashCoordinator variant with single root view controller")
+    }
+    
+    deinit {
+        print("SplashCoordinator:deinit()")
     }
     
     func start() {
         
+        print("SplashCoordinator:start()")
+
         splashViewController.coordinator = self
         
         rootViewController.addChild(splashViewController)
@@ -46,6 +54,11 @@ class SplashCoordinator: SplashCoordinatorProtocol {
         splashViewController.didMove(toParent: rootViewController)
         
         rootViewController.currentViewController = splashViewController
+    }
+    
+    func stop() {
+        print("SplashCoordinator:stop()")
+        splashViewController.coordinator = nil
     }
     
     func showSignInScreen() {
@@ -67,28 +80,44 @@ class SplashCoordinator_SwapWindowRootVC: SplashCoordinatorProtocol {
     
     private let window: UIWindow
     
-    init(window: UIWindow) {
-        self.splashViewController = SplashViewController()
+    private let rootCoordinator: RootCoordinator
+    
+    init(window: UIWindow, rootCoordinator: RootCoordinator) {
+        print("SplashCoordinator:init()")
         
         self.window = window
-        print("Creating SplashCoordinator variant with multiple swappable root view controller")
+        self.rootCoordinator = rootCoordinator
+        
+        self.splashViewController = SplashViewController()
+    }
+    
+    deinit {
+        print("SplashCoordinator:deinit()")
     }
     
     func start() {
-        
+        print("SplashCoordinator:start()")
+
         splashViewController.coordinator = self
         
         // swap the root view controller to the splash view controller
         window.rootViewController = splashViewController
     }
     
+    func stop() {
+        print("SplashCoordinator:stop()")
+        splashViewController.coordinator = nil
+    }
+
     func showSignInScreen() {
-        let signInCoordinator = SignInCoordinator_SwapWindowRootVC(window: window)
-        signInCoordinator.start()
+        // let signInCoordinator = SignInCoordinator_SwapWindowRootVC(window: window)
+        // signInCoordinator.start()
+        rootCoordinator.showSignInScreen()
     }
     func showHomeScreen() {
-        let homeCoordinator = HomeCoordinator_SwapWindowRootVC(window: window)
-        homeCoordinator.start()
+        // let homeCoordinator = HomeCoordinator_SwapWindowRootVC(window: window)
+        // homeCoordinator.start()
+        rootCoordinator.showHomeScreen()
     }
 }
 
@@ -97,29 +126,46 @@ class SplashCoordinator_NavRootVC: SplashCoordinatorProtocol {
     
     private let splashViewController: SplashViewController
     
-    private var parentNavigationController: UINavigationController
+    private var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
-        self.splashViewController = SplashViewController()
+    private let rootCoordinator: RootCoordinator
+
+    init(navigationController: UINavigationController, rootCoordinator: RootCoordinator) {
+        print("SplashCoordinator:init()")
         
-        self.parentNavigationController = navigationController
-        print("Creating SplashCoordinator variant with navigable root view controller")
+        self.navigationController = navigationController
+        self.rootCoordinator = rootCoordinator
+        
+        self.splashViewController = SplashViewController()
+    }
+    
+    deinit {
+        print("SplashCoordinator:deinit()")
     }
     
     func start() {
-        
+        print("SplashCoordinator:start()")
+
         splashViewController.coordinator = self
         
-        parentNavigationController.pushViewController(splashViewController, animated: true)
+        navigationController.pushViewController(splashViewController, animated: true)
+    }
+    
+    func stop() {
+        print("SplashCoordinator:stop()")
         
+        splashViewController.coordinator = nil
+        //navigationController.popViewController(animated: true)
     }
     
     func showSignInScreen() {
-        let signInCoordinator = SignInCoordinator_NavRootVC(navigationController: parentNavigationController)
-        signInCoordinator.start()
+        // let signInCoordinator = SignInCoordinator_NavRootVC(navigationController: parentNavigationController)
+        // signInCoordinator.start()
+        rootCoordinator.showSignInScreen()
     }
     func showHomeScreen() {
-        let homeCoordinator = HomeCoordinator_NavRootVC(navigationController: parentNavigationController)
-        homeCoordinator.start()
+        // let homeCoordinator = HomeCoordinator_NavRootVC(navigationController: parentNavigationController)
+        // homeCoordinator.start()
+        rootCoordinator.showHomeScreen()
     }
 }

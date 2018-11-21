@@ -13,12 +13,25 @@ class SignInViewController: UIViewController {
     var coordinator: SignInCoordinatorProtocol?
     var viewModel: SignInViewModel!
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        print("SignInViewController:init()")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("SignInViewController:viewDidLoad")
+        print("SignInViewController:viewDidLoad()\n")
         configureView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("SignInViewController:viewWillDisappear()")
     }
     
     private func configureView() {
@@ -41,6 +54,6 @@ class SignInViewController: UIViewController {
     }
     
     deinit {
-        print("SignInViewController:deinit")
+        print("SignInViewController:deinit()")
     }
 }

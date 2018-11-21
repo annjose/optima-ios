@@ -13,12 +13,25 @@ class HomeViewController: UIViewController {
     var viewModel: HomeViewModel!
     var coordinator: HomeCoordinatorProtocol?
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        print("HomeViewController:init()")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("HomeViewController:viewDidLoad")
+        print("HomeViewController:viewDidLoad()\n")
         configureView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("HomeViewController:viewWillDisappear()")
     }
     
     func configureView() {

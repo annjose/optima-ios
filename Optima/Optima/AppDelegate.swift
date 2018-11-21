@@ -12,8 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-//    private var rootNavigationController: UINavigationController?
     
     private var rootCoordinator: RootCoordinator?
 

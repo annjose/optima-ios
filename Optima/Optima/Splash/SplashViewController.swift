@@ -14,11 +14,25 @@ class SplashViewController: UIViewController {
     
     var coordinator: SplashCoordinatorProtocol?
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        print("SplashViewController:init()")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("SplashViewController:viewDidLoad()\n")
         configureView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("SplashViewController:viewWillDisappear()")
     }
     
     private func configureView() {
@@ -53,5 +67,9 @@ class SplashViewController: UIViewController {
                 coordinator.showSignInScreen()
             }
         }
+    }
+    
+    deinit {
+        print("SplashViewController:deinit()")
     }
 }

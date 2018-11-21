@@ -30,9 +30,8 @@ class RootCoordinator: Coordinator {
     
     private var rootNavigationController: UINavigationController?
     
-    private var signInCoordinator: SignInCoordinatorProtocol?
-    private var homeCoordinator: HomeCoordinatorProtocol?
-
+    private var currentCoordinator: Coordinator?
+    
     init(window: UIWindow, coordinationStrategy: RootViewCoordinationStrategy) {
         self.window = window
         self.coordinationStrategy = coordinationStrategy
@@ -57,29 +56,32 @@ class RootCoordinator: Coordinator {
             print("ERROR splashCoordinator is nil; cannot show Splash screen")
             return
         }
+        
+        currentCoordinator?.stop()
         splashCoordinator.start()
+        currentCoordinator = splashCoordinator
     }
     
     func showSignInScreen() {
-        if signInCoordinator == nil {
-            signInCoordinator = createSignInCoordinator(coordinationStrategy: coordinationStrategy)
-        }
-        guard let signInCoordinator = signInCoordinator else {
+        
+        guard let signInCoordinator = createSignInCoordinator(coordinationStrategy: coordinationStrategy) else {
             print("ERROR signInCoordinator is nil; cannot show SignIn screen")
             return
         }
+        currentCoordinator?.stop()
         signInCoordinator.start()
+        currentCoordinator = signInCoordinator
     }
 
     func showHomeScreen() {
-        if homeCoordinator == nil {
-            homeCoordinator = createHomeCoordinator(coordinationStrategy: coordinationStrategy)
-        }
-        guard let homeCoordinator = homeCoordinator else {
+        
+        guard let homeCoordinator = createHomeCoordinator(coordinationStrategy: coordinationStrategy) else {
             print("ERROR homeCoordinator is nil; cannot show Home screen")
             return
         }
+        currentCoordinator?.stop()
         homeCoordinator.start()
+        currentCoordinator = homeCoordinator
     }
 
     // Helper functions to create a Coordinator depending on the coordination strategy
@@ -94,7 +96,7 @@ class RootCoordinator: Coordinator {
             return coordinator
             
         case .multipleRootViewControllers:
-            let coordinator = SplashCoordinator_SwapWindowRootVC(window: window)
+            let coordinator = SplashCoordinator_SwapWindowRootVC(window: window, rootCoordinator: self)
             return coordinator
             
         case .navigableRootViewController:
@@ -103,7 +105,7 @@ class RootCoordinator: Coordinator {
                 return nil
             }
             
-            let coordinator = SplashCoordinator_NavRootVC(navigationController: rootNavigationController)
+            let coordinator = SplashCoordinator_NavRootVC(navigationController: rootNavigationController, rootCoordinator: self)
             return coordinator
         }
     }
@@ -117,7 +119,7 @@ class RootCoordinator: Coordinator {
             return coordinator
             
         case .multipleRootViewControllers:
-            let coordinator = SignInCoordinator_SwapWindowRootVC(window: window)
+            let coordinator = SignInCoordinator_SwapWindowRootVC(window: window, rootCoordinator: self)
             return coordinator
             
         case .navigableRootViewController:
@@ -126,7 +128,7 @@ class RootCoordinator: Coordinator {
                 return nil
             }
             
-            let coordinator = SignInCoordinator_NavRootVC(navigationController: rootNavigationController)
+            let coordinator = SignInCoordinator_NavRootVC(navigationController: rootNavigationController, rootCoordinator: self)
             return coordinator
         }
     }
@@ -140,7 +142,7 @@ class RootCoordinator: Coordinator {
             return coordinator
             
         case .multipleRootViewControllers:
-            let coordinator = HomeCoordinator_SwapWindowRootVC(window: window)
+            let coordinator = HomeCoordinator_SwapWindowRootVC(window: window, rootCoordinator: self)
             return coordinator
             
         case .navigableRootViewController:
@@ -149,7 +151,7 @@ class RootCoordinator: Coordinator {
                 return nil
             }
             
-            let coordinator = HomeCoordinator_NavRootVC(navigationController: rootNavigationController)
+            let coordinator = HomeCoordinator_NavRootVC(navigationController: rootNavigationController, rootCoordinator: self)
             return coordinator
         }
     }

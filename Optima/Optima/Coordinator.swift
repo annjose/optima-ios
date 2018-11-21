@@ -12,4 +12,15 @@ import Foundation
 //  or other coordinators can confidently invoke this method to start the flow
 protocol Coordinator {
     func start()
+    func stop()
+}
+
+extension Coordinator {
+    func stop() {
+    }
+}
+
+protocol Coordinated {
+    func getCoordinator() -> Coordinator?
+    func setCoordinator(_ coordinator: Coordinator?)
 }
