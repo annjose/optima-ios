@@ -16,6 +16,8 @@
 		5057B53321A3F22800F2C800 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53221A3F22800F2C800 /* HomeViewModel.swift */; };
 		5057B53521A3F2F200F2C800 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */; };
 		5057B53821A480AE00F2C800 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53721A480AE00F2C800 /* SplashCoordinator.swift */; };
+		5057B53B21A539B300F2C800 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */; };
+		5057B53D21A539E700F2C800 /* ItemCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53C21A539E700F2C800 /* ItemCoordinator.swift */; };
 		507A04F1219A3C0400117D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A04F0219A3C0400117D8C /* AppDelegate.swift */; };
 		507A04F8219A3C0500117D8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507A04F7219A3C0500117D8C /* Assets.xcassets */; };
 		507A04FB219A3C0500117D8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 507A04F9219A3C0500117D8C /* LaunchScreen.storyboard */; };
@@ -54,6 +56,8 @@
 		5057B53221A3F22800F2C800 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		5057B53721A480AE00F2C800 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		5057B53C21A539E700F2C800 /* ItemCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoordinator.swift; sourceTree = "<group>"; };
 		507A04ED219A3C0400117D8C /* Optima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507A04F0219A3C0400117D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		507A04F7219A3C0500117D8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +137,15 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		5057B53921A5399B00F2C800 /* ItemDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */,
+				5057B53C21A539E700F2C800 /* ItemCoordinator.swift */,
+			);
+			path = ItemDetail;
+			sourceTree = "<group>";
+		};
 		507A04E4219A3C0400117D8C = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +169,7 @@
 		507A04EF219A3C0400117D8C /* Optima */ = {
 			isa = PBXGroup;
 			children = (
+				5057B53921A5399B00F2C800 /* ItemDetail */,
 				5057B52F21A3F20600F2C800 /* Home */,
 				5057B51D21A3BF0500F2C800 /* Model */,
 				5057B52E21A3F1EC00F2C800 /* SignIn */,
@@ -331,8 +345,10 @@
 				507A051F219A3DA500117D8C /* AuthManager.swift in Sources */,
 				5057B52521A3CF7E00F2C800 /* Coordinator.swift in Sources */,
 				5057B52D21A3F1DC00F2C800 /* SignInViewModel.swift in Sources */,
+				5057B53D21A539E700F2C800 /* ItemCoordinator.swift in Sources */,
 				5057B53121A3F21E00F2C800 /* HomeCoordinator.swift in Sources */,
 				507A04F1219A3C0400117D8C /* AppDelegate.swift in Sources */,
+				5057B53B21A539B300F2C800 /* ItemDetailViewController.swift in Sources */,
 				507A0523219A439D00117D8C /* SignInViewController.swift in Sources */,
 				507A0521219A406000117D8C /* SplashViewController.swift in Sources */,
 				507A0526219A481800117D8C /* HomeViewController.swift in Sources */,
