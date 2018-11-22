@@ -13,7 +13,7 @@
 		5057B52521A3CF7E00F2C800 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B52421A3CF7E00F2C800 /* Coordinator.swift */; };
 		5057B52D21A3F1DC00F2C800 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B52C21A3F1DC00F2C800 /* SignInViewModel.swift */; };
 		5057B53121A3F21E00F2C800 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53021A3F21E00F2C800 /* HomeCoordinator.swift */; };
-		5057B53321A3F22800F2C800 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53221A3F22800F2C800 /* HomeViewModel.swift */; };
+		5057B53321A3F22800F2C800 /* HomeItemListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53221A3F22800F2C800 /* HomeItemListViewModel.swift */; };
 		5057B53521A3F2F200F2C800 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */; };
 		5057B53821A480AE00F2C800 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53721A480AE00F2C800 /* SplashCoordinator.swift */; };
 		5057B53B21A539B300F2C800 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */; };
@@ -29,7 +29,7 @@
 		507A051F219A3DA500117D8C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A051E219A3DA500117D8C /* AuthManager.swift */; };
 		507A0521219A406000117D8C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0520219A406000117D8C /* SplashViewController.swift */; };
 		507A0523219A439D00117D8C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0522219A439D00117D8C /* SignInViewController.swift */; };
-		507A0526219A481800117D8C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0525219A481800117D8C /* HomeViewController.swift */; };
+		507A0526219A481800117D8C /* HomeItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A0525219A481800117D8C /* HomeItemListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 		5057B52421A3CF7E00F2C800 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Optima/Coordinator.swift; sourceTree = SOURCE_ROOT; };
 		5057B52C21A3F1DC00F2C800 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		5057B53021A3F21E00F2C800 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		5057B53221A3F22800F2C800 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5057B53221A3F22800F2C800 /* HomeItemListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemListViewModel.swift; sourceTree = "<group>"; };
 		5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		5057B53721A480AE00F2C800 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 		507A051E219A3DA500117D8C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		507A0520219A406000117D8C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		507A0522219A439D00117D8C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		507A0525219A481800117D8C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		507A0525219A481800117D8C /* HomeItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +128,10 @@
 		5057B52F21A3F20600F2C800 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				507A0525219A481800117D8C /* HomeViewController.swift */,
-				5057B53221A3F22800F2C800 /* HomeViewModel.swift */,
+				507A0525219A481800117D8C /* HomeItemListViewController.swift */,
+				5057B53221A3F22800F2C800 /* HomeItemListViewModel.swift */,
 				5057B53021A3F21E00F2C800 /* HomeCoordinator.swift */,
+				5057B54021A6786700F2C800 /* ItemTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -150,7 +151,6 @@
 				5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */,
 				505B524621A73CE1001A4BFA /* ItemDetailViewModel.swift */,
 				5057B53C21A539E700F2C800 /* ItemDetailCoordinator.swift */,
-				5057B54021A6786700F2C800 /* ItemTableViewCell.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -363,11 +363,11 @@
 				5057B53B21A539B300F2C800 /* ItemDetailViewController.swift in Sources */,
 				507A0523219A439D00117D8C /* SignInViewController.swift in Sources */,
 				507A0521219A406000117D8C /* SplashViewController.swift in Sources */,
-				507A0526219A481800117D8C /* HomeViewController.swift in Sources */,
+				507A0526219A481800117D8C /* HomeItemListViewController.swift in Sources */,
 				5057B52121A3C1E500F2C800 /* RootViewController.swift in Sources */,
 				5057B52321A3C2BA00F2C800 /* RootCoordinator.swift in Sources */,
 				5057B53821A480AE00F2C800 /* SplashCoordinator.swift in Sources */,
-				5057B53321A3F22800F2C800 /* HomeViewModel.swift in Sources */,
+				5057B53321A3F22800F2C800 /* HomeItemListViewModel.swift in Sources */,
 				5057B53521A3F2F200F2C800 /* SignInCoordinator.swift in Sources */,
 				5057B51F21A3BF1500F2C800 /* UserProfile.swift in Sources */,
 			);

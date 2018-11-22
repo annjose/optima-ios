@@ -53,7 +53,7 @@ class SplashCoordinator: SplashCoordinatorProtocol {
         rootViewController.view.addSubview(splashViewController.view)
         splashViewController.didMove(toParent: rootViewController)
         
-        rootViewController.currentViewController = splashViewController
+        rootViewController.currentChildViewController = splashViewController
     }
     
     func stop() {

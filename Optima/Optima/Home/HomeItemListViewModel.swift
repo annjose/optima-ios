@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  HomeItemListViewModel.swift
 //  Optima
 //
 //  Created by Jose, Ann Catherine on 11/19/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeViewModel {
+class HomeItemListViewModel {
     var title = ""
     var signOutButtonTitle = ""
     

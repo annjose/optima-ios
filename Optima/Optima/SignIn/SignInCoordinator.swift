@@ -58,11 +58,11 @@ class SignInCoordinator: SignInCoordinatorProtocol {
         signInNavigationController.didMove(toParent: rootViewController)
         signInNavigationController.view.frame = rootViewController.view.frame
         
-        rootViewController.currentViewController.willMove(toParent: nil)
-        rootViewController.currentViewController.view.removeFromSuperview()
-        rootViewController.currentViewController.removeFromParent()
+        rootViewController.currentChildViewController.willMove(toParent: nil)
+        rootViewController.currentChildViewController.view.removeFromSuperview()
+        rootViewController.currentChildViewController.removeFromParent()
 
-        rootViewController.currentViewController = signInNavigationController
+        rootViewController.currentChildViewController = signInNavigationController
     }
     
     func stop() {

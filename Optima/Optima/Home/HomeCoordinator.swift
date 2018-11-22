@@ -21,7 +21,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
 // Type 1: This coordinator adds top level VCs as child of root VC, thus avoids swapping root VCs
 class HomeCoordinator: HomeCoordinatorProtocol {
     
-    private var homeViewController: HomeViewController!
+    private var viewController: HomeItemListViewController!
     
     private let rootViewController: RootViewController
 
@@ -33,8 +33,6 @@ class HomeCoordinator: HomeCoordinatorProtocol {
 
         self.rootViewController = rootViewController
         self.rootCoordinator = rootCoordinator
-        
-        //self.homeViewController = HomeViewController()
     }
     
     deinit {
@@ -45,29 +43,27 @@ class HomeCoordinator: HomeCoordinatorProtocol {
         
         print("HomeCoordinator:start()")
 
-        // Reset the HomeViewController and set its view model and ccordinator
-        homeViewController = HomeViewController()
+        // Reset the HomeItemListViewController and set its view model and coordinator
+        viewController = HomeItemListViewController()
 
-        homeViewController.viewModel = HomeViewModel()
-        homeViewController.coordinator = self
+        viewController.viewModel = HomeItemListViewModel()
+        viewController.coordinator = self
 
-        let homeNavigationController = UINavigationController(rootViewController: self.homeViewController)
+        let homeNavigationController = UINavigationController(rootViewController: self.viewController)
         
-        rootViewController.addChild(homeNavigationController)
-        rootViewController.view.addSubview(homeNavigationController.view)
-        homeNavigationController.didMove(toParent: rootViewController)
-        homeNavigationController.view.frame = rootViewController.view.frame
+        // Option 1: Show the Home view controller as the Root view controller (single-dimension horizontal nav)
+        // rootViewController.swapCurrentChild(to: homeNavigationController)
         
-        rootViewController.currentViewController.willMove(toParent: nil)
-        rootViewController.currentViewController.view.removeFromSuperview()
-        rootViewController.currentViewController.removeFromParent()
+        // Option 2: Show the Home view controller inside a Tab bar controller (multi-dimension horizontal nav)
+        let mainTabBarController = UITabBarController()
+        mainTabBarController.setViewControllers([homeNavigationController], animated: false)
         
-        rootViewController.currentViewController = homeNavigationController
+        rootViewController.swapCurrentChild(to: mainTabBarController)
     }
     
     func stop() {
         print("HomeCoordinator:stop()")
-        homeViewController.coordinator = nil
+        viewController.coordinator = nil
     }
     
     func showSignInScreen() {
@@ -81,7 +77,7 @@ class HomeCoordinator: HomeCoordinatorProtocol {
 // Type 2: This coordinator swaps the root view controller of the window
 class HomeCoordinator_SwapWindowRootVC: HomeCoordinatorProtocol {
     
-    let homeViewController: HomeViewController
+    let viewController: HomeItemListViewController
 
     private let window: UIWindow
     private let rootCoordinator: RootCoordinator
@@ -92,7 +88,7 @@ class HomeCoordinator_SwapWindowRootVC: HomeCoordinatorProtocol {
         self.window = window
         self.rootCoordinator = rootCoordinator
 
-        self.homeViewController = HomeViewController()
+        self.viewController = HomeItemListViewController()
     }
     
     deinit {
@@ -102,16 +98,16 @@ class HomeCoordinator_SwapWindowRootVC: HomeCoordinatorProtocol {
     func start() {
         print("HomeCoordinator:start()")
 
-        homeViewController.viewModel = HomeViewModel()
-        homeViewController.coordinator = self
+        viewController.viewModel = HomeItemListViewModel()
+        viewController.coordinator = self
 
-        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+        let homeNavigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = homeNavigationController
     }
     
     func stop() {
         print("HomeCoordinator:stop()")
-        homeViewController.coordinator = nil
+        viewController.coordinator = nil
     }
     
     func showSignInScreen() {
@@ -124,7 +120,7 @@ class HomeCoordinator_SwapWindowRootVC: HomeCoordinatorProtocol {
 // Type 3: This coordinator pushes view controllers to the root navigation controller
 class HomeCoordinator_NavRootVC: HomeCoordinatorProtocol {
     
-    let homeViewController: HomeViewController
+    let viewController: HomeItemListViewController
     
     private let navigationController: UINavigationController
     private let rootCoordinator: RootCoordinator
@@ -135,7 +131,7 @@ class HomeCoordinator_NavRootVC: HomeCoordinatorProtocol {
         self.navigationController = navigationController
         self.rootCoordinator = rootCoordinator
 
-        self.homeViewController = HomeViewController()
+        self.viewController = HomeItemListViewController()
     }
     
     deinit {
@@ -145,16 +141,16 @@ class HomeCoordinator_NavRootVC: HomeCoordinatorProtocol {
     func start() {
         print("HomeCoordinator:start()")
 
-        homeViewController.viewModel = HomeViewModel()
-        homeViewController.coordinator = self
+        viewController.viewModel = HomeItemListViewModel()
+        viewController.coordinator = self
 
-        navigationController.pushViewController(homeViewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func stop() {
         print("HomeCoordinator:stop()")
         
-        homeViewController.coordinator = nil
+        viewController.coordinator = nil
         
         // If you pop the current view controller, it creates a UI glitch of VC coming in and out
         //navigationController.popViewController(animated: false)

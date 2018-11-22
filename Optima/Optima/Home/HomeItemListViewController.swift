@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  HomeItemListViewController.swift
 //  Optima
 //
 //  Created by Jose, Ann Catherine on 11/12/18.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeItemListViewController: UIViewController {
 
-    var viewModel: HomeViewModel!
+    var viewModel: HomeItemListViewModel!
     var coordinator: HomeCoordinatorProtocol?
     
     private var tableView: UITableView!
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        print("HomeViewController:init()")
+        print("HomeItemListViewController:init()")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,14 +28,14 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("HomeViewController:viewDidLoad()\n")
+        print("HomeItemListViewController:viewDidLoad()\n")
         
         viewModel.configure()
         configureView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("HomeViewController:viewWillDisappear()")
+        print("HomeItemListViewController:viewWillDisappear()")
     }
     
     private func configureView() {
@@ -81,13 +81,13 @@ class HomeViewController: UIViewController {
     }
     
     deinit {
-        print("HomeViewController:deinit()")
+        print("HomeItemListViewController:deinit()")
     }
 }
 
-extension HomeViewController: UITableViewDelegate {
+extension HomeItemListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("HomeViewController:didSelectRowAt(): section=\(indexPath.section); row=\(indexPath.row)")
+        print("HomeItemListViewController:didSelectRowAt(): section=\(indexPath.section); row=\(indexPath.row)")
         
         let item = viewModel.items[indexPath.row]
         let itemDetailCoordinator = ItemDetailCoordinator(navigationController: navigationController!, item: item)
@@ -95,7 +95,7 @@ extension HomeViewController: UITableViewDelegate {
     }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension HomeItemListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.items.count
     }
