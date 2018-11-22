@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the coordinationStratey to a valid one
         //  Can be singleRootViewController, multipleRootViewControllers or navigableRootViewController
         //  The best approach is to use singleRootViewController
-        let coordinationStrategy: RootViewCoordinationStrategy = .multipleRootViewControllers
+        let coordinationStrategy: RootViewCoordinationStrategy = .singleRootViewController
 
         rootCoordinator = RootCoordinator(window: window, coordinationStrategy: coordinationStrategy)
         rootCoordinator?.start()

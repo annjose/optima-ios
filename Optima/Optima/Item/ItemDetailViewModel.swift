@@ -14,10 +14,9 @@ class ItemDetailViewModel {
     
     var theme: Theme
     
-    var backgroundColor: UIColor?
+    var backgroundColor: UIColor = .white
     
     var itemNameText: String
-    var itemNameTextColor: UIColor?
     var itemDescriptionText: String
     
     init(item: Item, theme: Theme = .light) {
@@ -29,17 +28,31 @@ class ItemDetailViewModel {
         self.itemDescriptionText = item.description
     }
     
+    var themeSwitchButtonLabel: String {
+        return theme == .light ? "Dark Mode" : "Light Mode"
+    }
+    
+    var itemNameTextColor: UIColor {
+        return theme == .light ? .black : .white
+    }
+    
+    
     func configure() {
                 
-        // do any view-specific configuration
+        // Do any view-specific configuration, for example, a theme for background colot
+        //  Note: This is just used as an example, it could've been a computed property like `itemNameTextColor`
         switch theme {
         case .dark:
             backgroundColor = .black
-            itemNameTextColor = .white
         default:
             backgroundColor = .white
-            itemNameTextColor = UIColor.black
         }
+    }
+    
+    func toggleTheme() {
+        theme.toggle()
+        
+        configure()
     }
 }
 

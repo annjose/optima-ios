@@ -15,6 +15,15 @@ protocol ItemDetailViewCoordinatorDelegate: class {
 enum Theme {
     case light
     case dark
+    
+    mutating func toggle() {
+        switch self {
+        case .light:
+            self = .dark
+        default:
+            self = .light
+        }
+    }
 }
 
 class ItemDetailViewController: UIViewController {
@@ -41,6 +50,8 @@ class ItemDetailViewController: UIViewController {
         viewModel.configure()
         
         configureView()
+        
+        configureNavBars()
     }
     
     func configureView() {
@@ -57,7 +68,7 @@ class ItemDetailViewController: UIViewController {
         configureConstraints()
     }
     
-    func configureConstraints() {
+    private func configureConstraints() {
         
         itemNameLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -69,5 +80,22 @@ class ItemDetailViewController: UIViewController {
 
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func configureNavBars() {
+        
+        let switchThemeNavItem = UIBarButtonItem(title: viewModel.themeSwitchButtonLabel, style: .plain,
+                                                 target: self, action: #selector(switchTheme))
+        self.navigationItem.rightBarButtonItem = switchThemeNavItem
+    }
+    
+    @objc private func switchTheme() {
+        viewModel.toggleTheme()
+        
+        navigationItem.rightBarButtonItem?.title = viewModel.themeSwitchButtonLabel
+        
+        view.backgroundColor = viewModel.backgroundColor
+
+        itemNameLabel.textColor = viewModel.itemNameTextColor
     }
 }
