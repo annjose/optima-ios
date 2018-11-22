@@ -32,7 +32,6 @@ class HomeViewController: UIViewController {
         
         viewModel.configure()
         configureView()
-        configureConstraints()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,9 +51,11 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: "MyCell")
 
         self.view.addSubview(tableView)
+        
+        configureConstraints()
     }
     
     private func configureConstraints() {
@@ -86,7 +87,11 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("row selected \(indexPath)")
+        print("HomeViewController:didSelectRowAt(): section=\(indexPath.section); row=\(indexPath.row)")
+        
+        let item = viewModel.items[indexPath.row]
+        let itemDetailCoordinator = ItemDetailCoordinator(navigationController: navigationController!, item: item)
+        itemDetailCoordinator.start()
     }
 }
 
@@ -99,8 +104,13 @@ extension HomeViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
         
+        guard let itemCell = cell as? ItemTableViewCell else {
+            print("Table view cell is not of type ItemTableViewCell")
+            return cell
+        }
+        
         let itemViewModel = viewModel.itemViewModel(forIndexPath: indexPath)
-        cell.textLabel!.text = itemViewModel.name
+        itemCell.configure(viewModel: itemViewModel)
         return cell
     }
 }

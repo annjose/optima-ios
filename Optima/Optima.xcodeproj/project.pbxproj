@@ -17,7 +17,10 @@
 		5057B53521A3F2F200F2C800 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */; };
 		5057B53821A480AE00F2C800 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53721A480AE00F2C800 /* SplashCoordinator.swift */; };
 		5057B53B21A539B300F2C800 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */; };
-		5057B53D21A539E700F2C800 /* ItemCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53C21A539E700F2C800 /* ItemCoordinator.swift */; };
+		5057B53D21A539E700F2C800 /* ItemDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53C21A539E700F2C800 /* ItemDetailCoordinator.swift */; };
+		5057B53F21A6769100F2C800 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B53E21A6769100F2C800 /* Item.swift */; };
+		5057B54121A6786700F2C800 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B54021A6786700F2C800 /* ItemTableViewCell.swift */; };
+		505B524721A73CE1001A4BFA /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505B524621A73CE1001A4BFA /* ItemDetailViewModel.swift */; };
 		507A04F1219A3C0400117D8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507A04F0219A3C0400117D8C /* AppDelegate.swift */; };
 		507A04F8219A3C0500117D8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507A04F7219A3C0500117D8C /* Assets.xcassets */; };
 		507A04FB219A3C0500117D8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 507A04F9219A3C0500117D8C /* LaunchScreen.storyboard */; };
@@ -57,7 +60,10 @@
 		5057B53421A3F2F200F2C800 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		5057B53721A480AE00F2C800 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
-		5057B53C21A539E700F2C800 /* ItemCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoordinator.swift; sourceTree = "<group>"; };
+		5057B53C21A539E700F2C800 /* ItemDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailCoordinator.swift; sourceTree = "<group>"; };
+		5057B53E21A6769100F2C800 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		5057B54021A6786700F2C800 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		505B524621A73CE1001A4BFA /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
 		507A04ED219A3C0400117D8C /* Optima.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Optima.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		507A04F0219A3C0400117D8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		507A04F7219A3C0500117D8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				5057B51E21A3BF1500F2C800 /* UserProfile.swift */,
+				5057B53E21A6769100F2C800 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,13 +144,15 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		5057B53921A5399B00F2C800 /* ItemDetail */ = {
+		5057B53921A5399B00F2C800 /* Item */ = {
 			isa = PBXGroup;
 			children = (
 				5057B53A21A539B300F2C800 /* ItemDetailViewController.swift */,
-				5057B53C21A539E700F2C800 /* ItemCoordinator.swift */,
+				505B524621A73CE1001A4BFA /* ItemDetailViewModel.swift */,
+				5057B53C21A539E700F2C800 /* ItemDetailCoordinator.swift */,
+				5057B54021A6786700F2C800 /* ItemTableViewCell.swift */,
 			);
-			path = ItemDetail;
+			path = Item;
 			sourceTree = "<group>";
 		};
 		507A04E4219A3C0400117D8C = {
@@ -169,7 +178,7 @@
 		507A04EF219A3C0400117D8C /* Optima */ = {
 			isa = PBXGroup;
 			children = (
-				5057B53921A5399B00F2C800 /* ItemDetail */,
+				5057B53921A5399B00F2C800 /* Item */,
 				5057B52F21A3F20600F2C800 /* Home */,
 				5057B51D21A3BF0500F2C800 /* Model */,
 				5057B52E21A3F1EC00F2C800 /* SignIn */,
@@ -344,8 +353,11 @@
 			files = (
 				507A051F219A3DA500117D8C /* AuthManager.swift in Sources */,
 				5057B52521A3CF7E00F2C800 /* Coordinator.swift in Sources */,
+				5057B54121A6786700F2C800 /* ItemTableViewCell.swift in Sources */,
+				505B524721A73CE1001A4BFA /* ItemDetailViewModel.swift in Sources */,
+				5057B53F21A6769100F2C800 /* Item.swift in Sources */,
 				5057B52D21A3F1DC00F2C800 /* SignInViewModel.swift in Sources */,
-				5057B53D21A539E700F2C800 /* ItemCoordinator.swift in Sources */,
+				5057B53D21A539E700F2C800 /* ItemDetailCoordinator.swift in Sources */,
 				5057B53121A3F21E00F2C800 /* HomeCoordinator.swift in Sources */,
 				507A04F1219A3C0400117D8C /* AppDelegate.swift in Sources */,
 				5057B53B21A539B300F2C800 /* ItemDetailViewController.swift in Sources */,

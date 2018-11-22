@@ -12,7 +12,7 @@ class HomeViewModel {
     var title = ""
     var signOutButtonTitle = ""
     
-    var items = [ItemViewModel]()
+    var items = [Item]()
     
     func configure() {
         title = "Home"
@@ -27,14 +27,15 @@ class HomeViewModel {
     }
     
     func itemViewModel(forIndexPath indexPath: IndexPath) -> ItemViewModel {
-        return items[indexPath.row]
+        let item = items[indexPath.row]
+        return ItemViewModel(name: item.name, description: item.description)
     }
     
     private func loadItems() {
-        items.append(ItemViewModel(name: "Item 1", description: "Details of item 1"))
-        items.append(ItemViewModel(name: "Item 2", description: "Details of item 2"))
-        items.append(ItemViewModel(name: "Item 3", description: "Details of item 3"))
-        items.append(ItemViewModel(name: "Item 4", description: "Details of item 4"))
+        items.append(Item(id: 1, name: "Item 1", description: "Details of item 1"))
+        items.append(Item(id: 2, name: "Item 2", description: "Details of item 2"))
+        items.append(Item(id: 3, name: "Item 3", description: "Details of item 3"))
+        items.append(Item(id: 4, name: "Item 4", description: "Details of item 4"))
     }
 }
 
